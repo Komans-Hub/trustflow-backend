@@ -1,7 +1,9 @@
 const express = require('express');
 const cors    = require('cors');
 
-const authRoutes = require('./routes/auth');
+const authRoutes        = require('./routes/auth');
+const transactionRoutes = require('./routes/transactions');
+const merchantRoutes    = require('./routes/merchants');
 
 const app = express();
 
@@ -19,7 +21,9 @@ app.get('/health', (req, res) => {
 });
 
 // ─── Routes ──────────────────────────────────────────────────────────────────
-app.use('/auth', authRoutes);
+app.use('/auth',         authRoutes);
+app.use('/transactions', transactionRoutes);
+app.use('/merchants',    merchantRoutes);
 
 // ─── 404 handler ─────────────────────────────────────────────────────────────
 app.use((req, res) => {
